@@ -11,7 +11,7 @@
 #
 class Sub < ApplicationRecord
     validates :title, presence: true
-    validates :description
+    
 
     belongs_to :moderator,
         foreign_key: :moderator_id,

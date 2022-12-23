@@ -1,4 +1,8 @@
 class SubsController < ApplicationController
+
+    before_action :require_logged_in, only: [:edit, :update]
+    
+
     def index
         @subs = Sub.all 
         render :index
@@ -31,7 +35,7 @@ class SubsController < ApplicationController
         if @sub.update(sub_params)
             redirect_to sub_url(@sub)
         else
-            render :json @sub.errors.full_message, status: :unprocessable_entity
+            render json: @sub.errors.full_messages, status: :unprocessable_entity
         end
     end
 
